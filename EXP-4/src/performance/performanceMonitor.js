@@ -96,6 +96,29 @@ export const performanceMonitor = {
   },
 
 
+  reset() {
+
+    activeSession = null;
+
+    if (finishTimer) {
+      clearTimeout(finishTimer);
+      finishTimer = null;
+    }
+
+    state = {
+      ...state,
+      interaction: 'Ready',
+      renderedInstances: [],
+      totalRenderCount: 0,
+      durationMs: 0,
+      lastAction: 'Render counter reset',
+      timestamp: Date.now(),
+    };
+
+    notify();
+  },
+
+
   /*
    * Start measuring a drag-and-drop interaction.
    *

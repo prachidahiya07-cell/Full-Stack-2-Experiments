@@ -57,3 +57,48 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
+.workspace {
+	--blush: #d86f91;
+	--rose-soft: #fff1f5;
+}
+
+.rail {
+	background: linear-gradient(180deg, #211b3b 0%, #121a33 68%);
+}
+
+.brand-mark,
+.topbar h1 em,
+.lab-head h2 {
+	color: var(--blush);
+}
+
+.rail__nav-item--active {
+	background: #3b294c;
+	box-shadow: inset 3px 0 #ec91ad;
+}
+
+.create-button {
+	background: linear-gradient(135deg, #b95078, #803d70);
+}
+
+.render-total {
+	background: linear-gradient(135deg, #fff0f5, #fff8fb);
+	border-color: #f1c4d2;
+	color: #c85d83;
+}
+
+.mode-switch .is-active {
+	color: #b34f76;
+}
+
+.reset-button {
+	color: #a94f73;
+	background: #fff5f8;
+	border-color: #efc8d5;
+}
+
+.reset-button:hover {
+	background: #ffeaf1;
+	border-color: #e6a9bd;
+}
