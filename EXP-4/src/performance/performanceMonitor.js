@@ -80,7 +80,7 @@ export const performanceMonitor = {
 
       renderedInstances: [],
 
-      totalRenderCount: 0,
+      totalRenderCount: state.totalRenderCount,
 
       durationMs: 0,
 
@@ -116,6 +116,8 @@ export const performanceMonitor = {
 
       label,
 
+      mode: state.mode,
+
       /*
        * Set stores DISTINCT component instances.
        */
@@ -140,7 +142,7 @@ export const performanceMonitor = {
 
       renderedInstances: [],
 
-      totalRenderCount: 0,
+      totalRenderCount: state.totalRenderCount,
 
       durationMs: 0,
 
@@ -161,6 +163,20 @@ export const performanceMonitor = {
      * current drag-and-drop measurement.
      */
     if (!activeSession) {
+      return;
+    }
+
+    if (
+      activeSession.mode === 'optimized' &&
+      instanceId !== 'Calendar'
+    ) {
+      return;
+    }
+
+    if (
+      activeSession.mode === 'non-optimized' &&
+      !instanceId.startsWith('CalendarDay')
+    ) {
       return;
     }
 
@@ -238,6 +254,7 @@ export const performanceMonitor = {
         renderedInstances,
 
         totalRenderCount:
+          state.totalRenderCount +
           session.renderCalls,
 
         durationMs:

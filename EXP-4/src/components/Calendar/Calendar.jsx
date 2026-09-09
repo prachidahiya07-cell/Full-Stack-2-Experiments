@@ -376,6 +376,10 @@ function Calendar({
               'yyyy-MM-dd'
             );
 
+          performanceMonitor.recordRender(
+            `CalendarDay · ${dateKey}`
+          );
+
           const isDragOver =
             dragOverDate &&
             format(
