@@ -1,39 +1,37 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/useAuth";
+import "../styles/navbar.css";
 
-function ProtectedRoute({
-  children,
-  allowedRoles = []
-}) {
-  const {
-    user,
-    isAuthenticated
-  } = useAuth();
+function Navbar() {
+  const { user, logout } = useAuth();
 
-  // User is not logged in
-  if (!isAuthenticated) {
-    return (
-      <Navigate
-        to="/login"
-        replace
-      />
-    );
-  }
+  return (
+    <header className="navbar">
+      <Link to="/home" className="navbar-brand">
+        <div className="brand-logo">C</div>
+        <div className="brand-text">
+          <h2>Campus Portal</h2>
+          <span>UNIVERSITY DIGITAL HUB</span>
+        </div>
+      </Link>
 
-  // User does not have required role
-  if (
-    allowedRoles.length > 0 &&
-    !allowedRoles.includes(user.role)
-  ) {
-    return (
-      <Navigate
-        to="/unauthorized"
-        replace
-      />
-    );
-  }
+      <div className="navbar-right">
+        <div className="navbar-user">
+          <div className="navbar-avatar">
+            {user?.name?.charAt(0) || "U"}
+          </div>
+          <div className="navbar-user-text">
+            <strong>{user?.name || "User"}</strong>
+            <span>{user?.role || "guest"}</span>
+          </div>
+        </div>
 
-  return children;
+        <button type="button" className="logout-button" onClick={logout}>
+          Sign out
+        </button>
+      </div>
+    </header>
+  );
 }
 
-export default ProtectedRoute;
+export default Navbar;
