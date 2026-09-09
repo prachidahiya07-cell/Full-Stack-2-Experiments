@@ -6,3 +6,54 @@
 .render-lab { padding: 21px 20px; height: fit-content; box-shadow: 0 18px 38px #28425e18; }.lab-head { display: flex; justify-content: space-between; align-items: start; padding-bottom: 17px; border-bottom: 1px solid #e8edf2; }.lab-head h2 { color: #3786be; font: 700 28px 'Space Grotesk'; margin: 7px 0 0; }.lab-head button { border: 1px solid #e1e8ee; border-radius: 8px; background: #fff; color: #8090a2; padding: 5px 8px; }.mode-switch { display: grid; grid-template-columns: 1fr 1fr; background: #edf2f6; border-radius: 10px; padding: 3px; margin: 17px 0 9px; }.mode-switch button { border: 0; background: transparent; color: #8491a2; border-radius: 8px; padding: 10px 4px; font-size: 11px; font-weight: 700; }.mode-switch .is-active { background: #fff; color: #437ca7; box-shadow: 0 2px 8px #24384b12; }.reset-button { width: 100%; border: 1px solid #dde5eb; border-radius: 9px; background: #f2f6f8; color: #6f8194; padding: 10px; }.render-total { background: linear-gradient(135deg, #eef8ff, #f5fbff); border: 1px solid #c6e4fa; border-radius: 12px; margin: 15px 0 20px; padding: 18px 13px; display: flex; align-items: baseline; gap: 7px; color: #3183c1; }.render-total strong { font: 700 25px 'Space Grotesk'; }.render-total span { font-size: 13px; font-weight: 600; }.calculation { border-top: 1px solid #e8edf2; padding-top: 17px; }.calculation h3 { font: 700 13px 'Space Grotesk'; margin: 0 0 16px; }.calculation div:not(.meter) { display: flex; justify-content: space-between; margin: 10px 0; font-size: 11px; color: #8090a0; }.calculation strong { color: #4d5b6d; }.meter { height: 6px; background: #e5edf3; border-radius: 9px; margin-top: 19px; overflow: hidden; }.meter span { display: block; height: 100%; border-radius: inherit; background: #3e88c2; }.calculation small { color: #98a3ad; font-size: 10px; display: block; margin-top: 8px; }.lab-note { display: flex; gap: 10px; margin-top: 22px; padding: 13px 10px; border-radius: 9px; background: #fff9eb; color: #e1ad3d; }.lab-note--blue { background: #eef8ff; color: #3d8cc6; }.lab-note strong, .lab-note small { display: block; }.lab-note strong { color: #35465a; font-size: 11px; }.lab-note small { color: #8b98a5; font-size: 10px; margin-top: 3px; }.selected-post { margin-top: 20px; border-top: 1px solid #e8edf2; padding-top: 17px; display: grid; gap: 6px; }.selected-post strong { font: 700 19px 'Space Grotesk'; }.selected-post > span:last-child { color: #8090a0; font-size: 11px; }
 @media (max-width: 1050px) { .rail { width: 190px; flex-basis: 190px; }.main-grid { grid-template-columns: 1fr; }.render-lab { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 18px; }.lab-head, .render-total, .calculation, .lab-note, .selected-post { margin: 0; }.lab-head { grid-column: 1 / -1; }.mode-switch, .reset-button { margin: 0; } }
 @media (max-width: 720px) { .workspace { display: block; }.rail { width: 100%; padding: 14px 18px; }.rail__brand { margin: 0 0 14px; }.rail__nav, .rail__rule, .rail__label, .rail__up-next, .rail__settings { display: none; }.content { padding: 25px 12px; }.topbar { align-items: end; }.topbar h1 { font-size: 23px; }.create-button { padding: 9px 11px; font-size: 12px; }.stats-row { gap: 14px; justify-content: space-between; }.stats-row div { gap: 4px; font-size: 10px; }.calendar-head { display: block; }.legend { margin-top: 14px; }.month-nav h2 { font-size: 17px; }.day-cell { min-height: 70px; padding: 4px; }.event-pill { font-size: 8px; padding: 3px; }.event-pill span { display: none; }.render-lab { display: block; }.render-lab > * { margin-top: 14px; }.render-lab .lab-head { margin-top: 0; } }
+
+.content,
+.main-grid,
+.calendar-card,
+.render-lab,
+.calendar-head,
+.calendar-head > *,
+.day-cell {
+	min-width: 0;
+}
+
+.main-grid {
+	width: 100%;
+}
+
+.calendar-card,
+.render-lab {
+	overflow: hidden;
+}
+
+.calendar-head {
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.month-nav,
+.legend {
+	min-width: 0;
+	max-width: 100%;
+}
+
+.legend {
+	flex-wrap: wrap;
+}
+
+.event-pill {
+	min-width: 0;
+}
+
+.calculation div:not(.meter) {
+	min-width: 0;
+	gap: 12px;
+}
+
+.calculation div:not(.meter) span,
+.calculation div:not(.meter) strong {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
