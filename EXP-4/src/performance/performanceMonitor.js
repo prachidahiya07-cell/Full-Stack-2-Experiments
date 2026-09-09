@@ -105,7 +105,7 @@ export const performanceMonitor = {
    * Otherwise the performance monitor UI itself could
    * create a React render and contaminate the measurement.
    */
-  beginInteraction(label) {
+  beginInteraction(label, renderCount = 0) {
 
     if (finishTimer) {
       clearTimeout(finishTimer);
@@ -127,7 +127,7 @@ export const performanceMonitor = {
        * Counts every execution of an instrumented
        * component function.
        */
-      renderCalls: 0,
+      renderCalls: renderCount,
 
       /*
        * High-resolution start time.

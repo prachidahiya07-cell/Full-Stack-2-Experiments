@@ -39,7 +39,10 @@ function CalendarPage() {
     const original = toDate(post.scheduledAt);
     const target = new Date(date);
     target.setHours(original.getHours(), original.getMinutes(), 0, 0);
-    performanceMonitor.beginInteraction(`Moved ${post.title}`);
+    performanceMonitor.beginInteraction(
+      `Moved ${post.title}`,
+      optimized ? 1 : calendarDays
+    );
     dispatch(movePost({ id: post.id, newScheduledAt: target.toISOString() }));
     setDraggedPost(null); setDragOver(null);
     requestAnimationFrame(() => requestAnimationFrame(() => performanceMonitor.finishInteraction()));
